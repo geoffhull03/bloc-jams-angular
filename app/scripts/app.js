@@ -19,8 +19,8 @@
              url: '/collection',
              templateUrl: '/tenmplates/collection.html'
      });
-     
-     angular
+  }
+        angular
          .module('blocJams', ['ui.router'])
          .config(config);
- }})();
+})();
