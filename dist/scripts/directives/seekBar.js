@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 (function() {
      function seekBar($document) {
          
@@ -34,6 +32,10 @@
                     return {width: percentString()};
                 };
                 
+                scope.thumbStyle = function () {
+                    return {left: percentString()};
+                };
+                
                 scope.onClickSeekBar = function(event) {
                     var percent = calculatePercent(seekBar, event);
                     scope.value = percent * scope.max;
@@ -46,7 +48,7 @@
                         scope.value = percent * scope.max;
                     });    
                 });
- 
+                    
                     $document.bind('mouseup.thumb', function() {
                         $document.unbind('mousemove.thumb');
                         $document.unbind('mouseup.thumb');
@@ -60,4 +62,3 @@
          .module('blocJams')
          .directive('seekBar', ['$document', seekBar]);
  })();
->>>>>>> checkpoint9
