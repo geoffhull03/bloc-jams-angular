@@ -30,6 +30,12 @@
                 formats: ['mp3'],
                 preload: true
             });
+           
+            currentBuzzObject.bind('timeupdate', function() {
+                $rootScope.$apply(function() {
+                SongPlayer.currentTime = currentBuzzObject.getTime();
+            });
+        });
 
             SongPlayer.currentSong = song;
         };
@@ -55,6 +61,12 @@
         */
         
         SongPlayer.currentSong = null;
+        
+         /**
+         * @desc Current playback time (in seconds) of currently playing song
+         * @type {Number}
+         */
+        SongPlayer.currentTime = null;
         
         SongPlayer.play = function(song) {
             song = song || SongPlayer.currentSong;
@@ -107,6 +119,17 @@
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
                 playSong(song);
+            }
+        };
+        
+        /**
+        * @function setCurrentTime
+        * @desc Set current time (in seconds) of currently playing song
+        * @param {Number} time
+        */
+        SongPlayer.setCurrentTime = function(time) {
+            if (currentBuzzObject) {
+            currentBuzzObject.setTime(time);
             }
         };
         
