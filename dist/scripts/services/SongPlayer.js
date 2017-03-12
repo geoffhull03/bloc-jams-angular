@@ -4,10 +4,6 @@
         
         var currentAlbum = Fixtures.getAlbum(); 
         
-        var getSongIndex = function(song) {
-            return currentAlbum.songs.indexOf(song);
-        };
-
          /**
          * @desc Buzz object audio file
          * @type {Object}
@@ -22,8 +18,7 @@
 
         var setSong = function(song) {
             if (currentBuzzObject) {
-                    currentBuzzObject.stop();
-                    SongPlayer.currentSong.playing = null;
+                    stopSong(SongPlayer.currentSong);
             }
 
             currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -36,6 +31,8 @@
                 SongPlayer.currentTime = currentBuzzObject.getTime();
             });
         });
+            
+            SongPlayer.setVolume(SongPlayer.setVolume);
 
             SongPlayer.currentSong = song;
         };
@@ -59,6 +56,9 @@
         *@desc Takes song as the parameter. If the object song is not the same as the current song, the new song should load and start playing. Else if the buzz song is equal to the current song and it's paused, the current song will play. 
         *@param {Object} song
         */
+        SongPlayer.getSongIndex = function(song) {
+            return currentAlbum.songs.indexOf(song);
+        };
         
         SongPlayer.currentSong = null;
         
@@ -67,6 +67,9 @@
          * @type {Number}
          */
         SongPlayer.currentTime = null;
+        
+        SongPlayer.volume = 42;
+        SongPlayer.maxVolume = 100;
         
         SongPlayer.play = function(song) {
             song = song || SongPlayer.currentSong;
@@ -129,7 +132,13 @@
         */
         SongPlayer.setCurrentTime = function(time) {
             if (currentBuzzObject) {
-            currentBuzzObject.setTime(time);
+                currentBuzzObject.setTime(time);
+            }
+        };
+        
+        SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
             }
         };
         
