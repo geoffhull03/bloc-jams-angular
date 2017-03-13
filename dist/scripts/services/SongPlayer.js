@@ -56,7 +56,7 @@
         *@desc Takes song as the parameter. If the object song is not the same as the current song, the new song should load and start playing. Else if the buzz song is equal to the current song and it's paused, the current song will play. 
         *@param {Object} song
         */
-        SongPlayer.getSongIndex = function(song) {
+        var getSongIndex = function(song) {
             return currentAlbum.songs.indexOf(song);
         };
         
@@ -100,7 +100,7 @@
         *@param {Object} currentSong
         */
         SongPlayer.previous = function() {
-            var currentSongIndex = SongPlayer.getSongIndex(SongPlayer.currentSong);
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
             
             if (currentSongIndex < 0) {
