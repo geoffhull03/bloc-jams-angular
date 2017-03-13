@@ -32,7 +32,7 @@
             });
         });
             
-            SongPlayer.setVolume(SongPlayer.setVolume);
+            SongPlayer.setVolume(SongPlayer.volume);
 
             SongPlayer.currentSong = song;
         };
@@ -68,7 +68,7 @@
          */
         SongPlayer.currentTime = null;
         
-        SongPlayer.volume = 42;
+        SongPlayer.volume = 75;
         SongPlayer.maxVolume = 100;
         
         SongPlayer.play = function(song) {
@@ -100,7 +100,7 @@
         *@param {Object} currentSong
         */
         SongPlayer.previous = function() {
-            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            var currentSongIndex = SongPlayer.getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
             
             if (currentSongIndex < 0) {
@@ -138,14 +138,16 @@
         
         SongPlayer.setVolume = function(volume) {
             if (currentBuzzObject) {
-                currentBuzzObject.setVolume(volume);
+            currentBuzzObject.setVolume(volume);
             }
         };
         
         return SongPlayer;
+ 
     }
 
-    angular
-        .module('blocJams')
-        .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
+angular
+    .module('blocJams')
+    .factory('SongPlayer',['$rootScope', 'Fixtures', SongPlayer]);
+
 })();
