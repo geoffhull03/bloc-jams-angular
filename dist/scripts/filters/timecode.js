@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
      function timecode() {
          return function(seconds) {
              var seconds = Number.parseFloat(seconds);
@@ -27,3 +27,26 @@
          .module('blocJams')
          .filter('timecode', timecode);
  })();
+ */
+(function() {
+	function timecode() {
+		return function(seconds) {
+			var songTimer;
+
+			if (seconds >= 3600) {
+				songTimer = buzz.toTimer(seconds, true);
+			} else if (seconds >= 600) {
+				songTimer = buzz.toTimer(seconds);
+			} else {
+				songTimer = buzz.toTimer(seconds);
+			}
+
+			return songTimer;
+		}
+	};
+
+	angular
+		.module('blocJams')
+		.filter('timecode', timecode);
+})();
+
