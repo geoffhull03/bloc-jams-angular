@@ -71,17 +71,17 @@
         SongPlayer.volume = 75;
         SongPlayer.maxVolume = 100;
         
-        SongPlayer.play = function(song) {
-            song = song || SongPlayer.currentSong;
-            if (SongPlayer.currentSong !== song) {
-                setSong(song);
-                playSong(song);
-            } else if (SongPlayer.currentSong === song) {
+        SongPlayer.play = function (song) {
+			song = song || SongPlayer.currentSong;
+			if (SongPlayer.currentSong !== song) {
+				setSong(song);
+				playSong(song);
+			} else if (SongPlayer.currentSong === song) {
 				if (currentBuzzObject.isPaused()) {
 					playSong(song);
 				}
-            }
-        };
+			}
+		};
         /**
         *@function SongPlayer.pause
         *@desc Takes song as the parameter. If the current buzz song is paused, the song playing attribute will be set to false.    
