@@ -44,6 +44,7 @@
         var playSong = function(song) {
             currentBuzzObject.play();
             song.playing = true;
+            song.paused = false;
         };
         
         var stopSong = function(song) {
@@ -92,6 +93,7 @@
             song = song || SongPlayer.currentSong;
             currentBuzzObject.pause();
             song.playing = false;
+            song.paused = true;
         };
         
         /**
@@ -141,6 +143,7 @@
             currentBuzzObject.setVolume(volume);
             }
         };
+        
         
         return SongPlayer;
  
