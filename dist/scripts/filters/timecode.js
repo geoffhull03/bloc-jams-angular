@@ -35,8 +35,6 @@
 
 			if (seconds >= 3600) {
 				songTimer = buzz.toTimer(seconds, true);
-			} else if (seconds >= 600) {
-				songTimer = buzz.toTimer(seconds);
 			} else {
 				songTimer = buzz.toTimer(seconds);
 			}
