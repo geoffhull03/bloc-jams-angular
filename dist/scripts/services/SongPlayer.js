@@ -35,6 +35,8 @@
             SongPlayer.setVolume(SongPlayer.volume);
 
             SongPlayer.currentSong = song;
+            
+            song.paused = false;
         };
         /**
         *@function playSong
